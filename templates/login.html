@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body bgcolor=”#DBF9FC">
+<h2 style="color:purple;">Login</h2>
+<form action= "{% url 'login' %}" method="POST">
+    {% csrf_token %}
+    <label>Username</label>
+    <input type="text" name="username" placeholder="Enter your username"><br><br>
+    <label>Password</label>
+    <input type="password" name="password" placeholder="Enter your password"><br><br>
+    <a href="{% url 'register' %}"> <b>Register</b> </a>
+    <input type="submit">
+    <a href="{% url 'newpage' %}"> <b>NewPage</b> </a>
+
+</form>
+{% for msg in messages %}
+<h2>{{msg}}</h2>
+{% endfor %}
+</body>
+</html>

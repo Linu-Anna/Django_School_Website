@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+     <script>
+            function random_function()
+            {
+                var a=document.getElementById("input").value;
+                if(a==="Science")
+                {
+                    var arr=["BSC","BA","MSC","MA"];
+                }
+                else if(a==="Commerce")
+                {
+                    var arr=["B.COM","M.COM","CA"];
+                }
+                else if(a==="Humanitis")
+                {
+                    var arr=["BA Politics","BA History,"MA History"];
+                }
+
+                var string="";
+
+                for(i=0;i<arr.length;i++)
+                {
+                    string=string+"<option value="+arr[i]+">"+arr[i]+"</option>";
+                }
+                document.getElementById("output").innerHTML=string;
+            }
+        </script>
+    <style>
+
+label
+ {
+ display: inline-block;
+ }
+</style>
+
+</head>
+<body bgcolor=”#DBF9FC" >
+<h2 style="color:green;">FORM</h2>
+<div align="left">
+<form action="/message" method="POST">
+
+    {% csrf_token %}
+    <label><b></b>FirstName<b></b></label>
+     &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp;<input type="text"  name="username" placeholder="Enter your name"><br><br><br><br>
+    <label>Password</label>
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<input type="password"   name="password" placeholder="Enter your password"><br><br><br><br>
+    <label>Date of Birth</label>
+     &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;  <input type="date" placeholder="DOB"><br><br><br><br>
+    <label>Age</label>
+     &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <input type="number" name="age"placeholder="Enter your age"><br><br><br><br>
+    <label>Gender</label>
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<input type="radio" name="Male" value="male">Male<br>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; <input type="radio" name="Female" value="female">Female<br><br><br><br>
+    <label>Email id</label>
+   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  <input type="email" name="emailid" placeholder="Email"><br><br><br><br>
+    <label>Ph No</label>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; <input type="name" name="phno" placeholder="Mob.no"><br><br><br><br>
+     <label>Address</label>
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<input type="text" name="address"><br><br>
+
+<!--    {% for city in cities %}-->
+<!--<option value="{{ city.pk }}">{{ city.name }}</option>-->
+<!--{% endfor %}--><lable>Department</lable>
+    &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;<select id="input" onchange="random_function()">
+            <option>Select Department </option>
+            <option>Science</option>
+            <option>Commerce</option>
+            <option>Humanitis</option>
+            <option>Arts</option>
+            <option>Computer Science</option>
+        </select>
+        <div>
+            <label>Courses</label>
+
+            &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            <select id="output" onchange="random_function1()">
+                <option>Select Course </option>
+            </select>
+        </div>
+    <label>Purpose</label>
+    &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;<select name="languages" id="lang"><br><br>
+       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;  <option value="Enquiry">Enquiry</option><br><br>
+        <option value="placeorder">Place Order</option><br><br>
+        <option value="return">Return</option><br><br>
+    </select><br><br>
+    </div>
+    <label>Material</label>
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+<label for="vehicle1"> Book</label>
+<input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+<label for="vehicle2"> Pen</label>
+<input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+<label for="vehicle3"> Exam Papers</label><br><br><br>
+    <a href="message.html">
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<input type="submit">
+</a>
+     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<button type="button">Logout</button><br><br>
+
+
+</form>
+<!--    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
+<!--  <script>-->
+<!--    $("#id_country").change(function () {-->
+<!--      var url = $("#personForm").attr("data-cities-url");-->
+<!--      var countryId = $(this).val();-->
+
+<!--      $.ajax({-->
+<!--        url: url,-->
+<!--        data: {-->
+<!--          'department': departmentid-->
+<!--        },-->
+<!--        success: function (data) {-->
+<!--          $("#course_id").html(data);-->
+<!--        }-->
+<!--      });-->
+
+<!--    });-->
+<!--  </script>-->
+</div>
+<br><br>
+{% for msg in messages %}
+<h2>{{msg}}</h2>
+{% endfor %}
+</body>
+</html>
